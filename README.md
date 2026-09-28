@@ -4,6 +4,8 @@ Thin **overlay** skills for coding agents. They sit on top of [Matt Pocock's ski
 
 They do **not** replace `grill-with-docs`, `to-spec`, `to-tickets`, `implement`, `tdd`, or `code-review`.
 
+They also do **not** replace a slim `AGENTS.md` or per-ticket files — see [docs/repo-templates/HOW-TO.md](docs/repo-templates/HOW-TO.md).
+
 ## Daily flow
 
 ```text
@@ -20,7 +22,15 @@ grill-with-docs → to-spec → to-tickets → enrich-tickets → before-impleme
 | Gate | `/before-implement <id>` | Check one ticket; hand off to Matt |
 | Build | Matt `/implement` | TDD → typecheck/tests → `/code-review` → commit |
 
-`before-implement` **stops after gates pass** and asks you to run `/implement` in a **fresh** session (one ticket per session), unless you explicitly say to continue coding in the same chat.
+## AGENTS.md + TASK (still required, keep thin)
+
+| Artifact | Purpose |
+|----------|---------|
+| [`docs/repo-templates/AGENTS.md`](docs/repo-templates/AGENTS.md) | Always-on rules: Done, stop, Trust, authority commands, Agent Guards pointer |
+| [`docs/repo-templates/TASK.md`](docs/repo-templates/TASK.md) | One-slice ticket template (ID / Acceptance / Paths + Guards) |
+| [`docs/repo-templates/HOW-TO.md`](docs/repo-templates/HOW-TO.md) | How the three layers fit together |
+
+Copy those into your app repo (or let `/setup-agent-guards` seed them). Skills = **how to run**; AGENTS = **standing rules**; tickets = **this slice**.
 
 ## Install
 
@@ -51,8 +61,6 @@ npx skills add mattpocock/skills
 ```
 
 ### Once per repo
-
-In the agent:
 
 ```text
 /setup-agent-guards
@@ -87,12 +95,10 @@ Hooks (`templates/HOOKS.md`) are **advanced / optional** and never replace Matt 
 ./bin/test.sh
 ```
 
-Runs skill frontmatter checks, rename guards, and deterministic provenance fixtures via `lib/check_provenance.py`.
-
 ## License
 
 [MIT](LICENSE)
 
 ## Acknowledgments
 
-Built to compose with [mattpocock/skills](https://github.com/mattpocock/skills). All credit for the implement/TDD/review loop belongs there.
+Built to compose with [mattpocock/skills](https://github.com/mattpocock/skills).
