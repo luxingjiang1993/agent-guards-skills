@@ -1,0 +1,1 @@
+{"name":"fixture","scripts":{"typecheck":"tsc -p . --noEmit","test":"vitest run"}}
